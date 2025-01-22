@@ -30,42 +30,42 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            richTextBox1 = new RichTextBox();
+            consoleTextBox = new RichTextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
             clearToolStripMenuItem = new ToolStripMenuItem();
-            checkBox1 = new CheckBox();
-            maskedTextBox1 = new MaskedTextBox();
-            label1 = new Label();
-            textBox1 = new TextBox();
+            screenCheckBox = new CheckBox();
+            ipTextBox = new MaskedTextBox();
+            ipLabel = new Label();
+            commandTextBox = new TextBox();
             panelMaskedTextBox1 = new Panel();
             panelTextBox1 = new Panel();
-            customButton1 = new Helpers.CustomButton();
-            customButton2 = new Helpers.CustomButton();
-            customButton3 = new Helpers.CustomButton();
-            customButton4 = new Helpers.CustomButton();
-            panelDownloader = new Panel();
-            labelDownload = new Label();
-            progressBar1 = new ProgressBar();
+            connectButton = new Helpers.CustomButton();
+            runButton = new Helpers.CustomButton();
+            disconnectButton = new Helpers.CustomButton();
+            commandButton = new Helpers.CustomButton();
+            downloadPanel = new Panel();
+            downloadLabel = new Label();
+            downloadProgressBar = new ProgressBar();
             contextMenuStrip1.SuspendLayout();
             panelMaskedTextBox1.SuspendLayout();
             panelTextBox1.SuspendLayout();
-            panelDownloader.SuspendLayout();
+            downloadPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // richTextBox1
+            // consoleTextBox
             // 
-            richTextBox1.BackColor = Color.Black;
-            richTextBox1.BorderStyle = BorderStyle.None;
-            richTextBox1.ContextMenuStrip = contextMenuStrip1;
-            richTextBox1.ForeColor = Color.White;
-            richTextBox1.Location = new Point(12, 12);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.ReadOnly = true;
-            richTextBox1.ScrollBars = RichTextBoxScrollBars.Vertical;
-            richTextBox1.Size = new Size(548, 284);
-            richTextBox1.TabIndex = 4;
-            richTextBox1.Text = "";
-            richTextBox1.LinkClicked += richTextBox1_LinkClicked;
+            consoleTextBox.BackColor = Color.Black;
+            consoleTextBox.BorderStyle = BorderStyle.None;
+            consoleTextBox.ContextMenuStrip = contextMenuStrip1;
+            consoleTextBox.ForeColor = Color.White;
+            consoleTextBox.Location = new Point(12, 12);
+            consoleTextBox.Name = "consoleTextBox";
+            consoleTextBox.ReadOnly = true;
+            consoleTextBox.ScrollBars = RichTextBoxScrollBars.Vertical;
+            consoleTextBox.Size = new Size(548, 284);
+            consoleTextBox.TabIndex = 4;
+            consoleTextBox.Text = "";
+            consoleTextBox.LinkClicked += richTextBox1_LinkClicked;
             // 
             // contextMenuStrip1
             // 
@@ -80,58 +80,58 @@
             clearToolStripMenuItem.Text = "Clear";
             clearToolStripMenuItem.Click += clearToolStripMenuItem_Click;
             // 
-            // checkBox1
+            // screenCheckBox
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.ForeColor = Color.White;
-            checkBox1.Location = new Point(174, 307);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(79, 19);
-            checkBox1.TabIndex = 5;
-            checkBox1.Text = "Screen off";
-            checkBox1.UseVisualStyleBackColor = true;
+            screenCheckBox.AutoSize = true;
+            screenCheckBox.ForeColor = Color.White;
+            screenCheckBox.Location = new Point(174, 307);
+            screenCheckBox.Name = "screenCheckBox";
+            screenCheckBox.Size = new Size(79, 19);
+            screenCheckBox.TabIndex = 5;
+            screenCheckBox.Text = "Screen off";
+            screenCheckBox.UseVisualStyleBackColor = true;
             // 
-            // maskedTextBox1
+            // ipTextBox
             // 
-            maskedTextBox1.BackColor = Color.FromArgb(25, 27, 28);
-            maskedTextBox1.BorderStyle = BorderStyle.None;
-            maskedTextBox1.Dock = DockStyle.Fill;
-            maskedTextBox1.ForeColor = Color.White;
-            maskedTextBox1.Location = new Point(4, 3);
-            maskedTextBox1.Mask = "\\1\\9\\2\\.\\1\\6\\8\\.\\1\\.###";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.PromptChar = '-';
-            maskedTextBox1.Size = new Size(72, 16);
-            maskedTextBox1.TabIndex = 6;
+            ipTextBox.BackColor = Color.FromArgb(25, 27, 28);
+            ipTextBox.BorderStyle = BorderStyle.None;
+            ipTextBox.Dock = DockStyle.Fill;
+            ipTextBox.ForeColor = Color.White;
+            ipTextBox.Location = new Point(4, 3);
+            ipTextBox.Mask = "\\1\\9\\2\\.\\1\\6\\8\\.\\1\\.###";
+            ipTextBox.Name = "ipTextBox";
+            ipTextBox.PromptChar = '-';
+            ipTextBox.Size = new Size(72, 16);
+            ipTextBox.TabIndex = 6;
             // 
-            // label1
+            // ipLabel
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Black;
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(303, 308);
-            label1.Name = "label1";
-            label1.Size = new Size(58, 15);
-            label1.TabIndex = 7;
-            label1.Text = "Device IP:";
+            ipLabel.AutoSize = true;
+            ipLabel.BackColor = Color.Black;
+            ipLabel.ForeColor = Color.White;
+            ipLabel.Location = new Point(303, 308);
+            ipLabel.Name = "ipLabel";
+            ipLabel.Size = new Size(58, 15);
+            ipLabel.TabIndex = 7;
+            ipLabel.Text = "Device IP:";
             // 
-            // textBox1
+            // commandTextBox
             // 
-            textBox1.BackColor = Color.FromArgb(25, 27, 28);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(4, 3);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Custom command...";
-            textBox1.Size = new Size(427, 16);
-            textBox1.TabIndex = 10;
+            commandTextBox.BackColor = Color.FromArgb(25, 27, 28);
+            commandTextBox.BorderStyle = BorderStyle.None;
+            commandTextBox.Dock = DockStyle.Fill;
+            commandTextBox.ForeColor = Color.White;
+            commandTextBox.Location = new Point(4, 3);
+            commandTextBox.Name = "commandTextBox";
+            commandTextBox.PlaceholderText = "Custom command...";
+            commandTextBox.Size = new Size(427, 16);
+            commandTextBox.TabIndex = 10;
             // 
             // panelMaskedTextBox1
             // 
             panelMaskedTextBox1.BackColor = Color.FromArgb(25, 27, 28);
             panelMaskedTextBox1.BorderStyle = BorderStyle.FixedSingle;
-            panelMaskedTextBox1.Controls.Add(maskedTextBox1);
+            panelMaskedTextBox1.Controls.Add(ipTextBox);
             panelMaskedTextBox1.Location = new Point(367, 304);
             panelMaskedTextBox1.Name = "panelMaskedTextBox1";
             panelMaskedTextBox1.Padding = new Padding(4, 3, 0, 0);
@@ -142,111 +142,111 @@
             // 
             panelTextBox1.BackColor = Color.FromArgb(25, 27, 28);
             panelTextBox1.BorderStyle = BorderStyle.FixedSingle;
-            panelTextBox1.Controls.Add(textBox1);
+            panelTextBox1.Controls.Add(commandTextBox);
             panelTextBox1.Location = new Point(12, 335);
             panelTextBox1.Name = "panelTextBox1";
             panelTextBox1.Padding = new Padding(4, 3, 0, 0);
             panelTextBox1.Size = new Size(433, 23);
             panelTextBox1.TabIndex = 16;
             // 
-            // customButton1
+            // connectButton
             // 
-            customButton1.BackColor = Color.FromArgb(25, 27, 28);
-            customButton1.BorderColor = Color.FromArgb(25, 27, 28);
-            customButton1.BorderSize = 1;
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatAppearance.MouseDownBackColor = Color.FromArgb(25, 27, 28);
-            customButton1.FlatAppearance.MouseOverBackColor = Color.FromArgb(35, 35, 35);
-            customButton1.FlatStyle = FlatStyle.Flat;
-            customButton1.ForeColor = Color.White;
-            customButton1.Location = new Point(12, 304);
-            customButton1.Name = "customButton1";
-            customButton1.Size = new Size(75, 23);
-            customButton1.TabIndex = 17;
-            customButton1.Text = "Connect";
-            customButton1.UseVisualStyleBackColor = false;
-            customButton1.Click += customButton1_Click;
+            connectButton.BackColor = Color.FromArgb(25, 27, 28);
+            connectButton.BorderColor = Color.FromArgb(25, 27, 28);
+            connectButton.BorderSize = 1;
+            connectButton.FlatAppearance.BorderSize = 0;
+            connectButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(25, 27, 28);
+            connectButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(35, 35, 35);
+            connectButton.FlatStyle = FlatStyle.Flat;
+            connectButton.ForeColor = Color.White;
+            connectButton.Location = new Point(12, 304);
+            connectButton.Name = "connectButton";
+            connectButton.Size = new Size(75, 23);
+            connectButton.TabIndex = 17;
+            connectButton.Text = "Connect";
+            connectButton.UseVisualStyleBackColor = false;
+            connectButton.Click += connectButton_Click;
             // 
-            // customButton2
+            // runButton
             // 
-            customButton2.BackColor = Color.FromArgb(25, 27, 28);
-            customButton2.BorderColor = Color.FromArgb(25, 27, 28);
-            customButton2.BorderSize = 1;
-            customButton2.FlatAppearance.BorderSize = 0;
-            customButton2.FlatAppearance.MouseDownBackColor = Color.FromArgb(25, 27, 28);
-            customButton2.FlatAppearance.MouseOverBackColor = Color.FromArgb(35, 35, 35);
-            customButton2.FlatStyle = FlatStyle.Flat;
-            customButton2.ForeColor = Color.White;
-            customButton2.Location = new Point(93, 304);
-            customButton2.Name = "customButton2";
-            customButton2.Size = new Size(75, 23);
-            customButton2.TabIndex = 18;
-            customButton2.Text = "Run";
-            customButton2.UseVisualStyleBackColor = false;
-            customButton2.Click += customButton2_Click;
+            runButton.BackColor = Color.FromArgb(25, 27, 28);
+            runButton.BorderColor = Color.FromArgb(25, 27, 28);
+            runButton.BorderSize = 1;
+            runButton.FlatAppearance.BorderSize = 0;
+            runButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(25, 27, 28);
+            runButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(35, 35, 35);
+            runButton.FlatStyle = FlatStyle.Flat;
+            runButton.ForeColor = Color.White;
+            runButton.Location = new Point(93, 304);
+            runButton.Name = "runButton";
+            runButton.Size = new Size(75, 23);
+            runButton.TabIndex = 18;
+            runButton.Text = "Run";
+            runButton.UseVisualStyleBackColor = false;
+            runButton.Click += runButton_Click;
             // 
-            // customButton3
+            // disconnectButton
             // 
-            customButton3.BackColor = Color.FromArgb(25, 27, 28);
-            customButton3.BorderColor = Color.FromArgb(25, 27, 28);
-            customButton3.BorderSize = 1;
-            customButton3.FlatAppearance.BorderSize = 0;
-            customButton3.FlatAppearance.MouseDownBackColor = Color.FromArgb(25, 27, 28);
-            customButton3.FlatAppearance.MouseOverBackColor = Color.FromArgb(35, 35, 35);
-            customButton3.FlatStyle = FlatStyle.Flat;
-            customButton3.ForeColor = Color.White;
-            customButton3.Location = new Point(451, 304);
-            customButton3.Name = "customButton3";
-            customButton3.Size = new Size(109, 23);
-            customButton3.TabIndex = 19;
-            customButton3.Text = "Disconnect";
-            customButton3.UseVisualStyleBackColor = false;
-            customButton3.Click += customButton3_Click;
+            disconnectButton.BackColor = Color.FromArgb(25, 27, 28);
+            disconnectButton.BorderColor = Color.FromArgb(25, 27, 28);
+            disconnectButton.BorderSize = 1;
+            disconnectButton.FlatAppearance.BorderSize = 0;
+            disconnectButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(25, 27, 28);
+            disconnectButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(35, 35, 35);
+            disconnectButton.FlatStyle = FlatStyle.Flat;
+            disconnectButton.ForeColor = Color.White;
+            disconnectButton.Location = new Point(451, 304);
+            disconnectButton.Name = "disconnectButton";
+            disconnectButton.Size = new Size(109, 23);
+            disconnectButton.TabIndex = 19;
+            disconnectButton.Text = "Disconnect";
+            disconnectButton.UseVisualStyleBackColor = false;
+            disconnectButton.Click += disconnectButton_Click;
             // 
-            // customButton4
+            // commandButton
             // 
-            customButton4.BackColor = Color.FromArgb(25, 27, 28);
-            customButton4.BorderColor = Color.FromArgb(25, 27, 28);
-            customButton4.BorderSize = 1;
-            customButton4.FlatAppearance.BorderSize = 0;
-            customButton4.FlatAppearance.MouseDownBackColor = Color.FromArgb(25, 27, 28);
-            customButton4.FlatAppearance.MouseOverBackColor = Color.FromArgb(35, 35, 35);
-            customButton4.FlatStyle = FlatStyle.Flat;
-            customButton4.ForeColor = Color.White;
-            customButton4.Location = new Point(451, 335);
-            customButton4.Name = "customButton4";
-            customButton4.Size = new Size(109, 23);
-            customButton4.TabIndex = 20;
-            customButton4.Text = "Run command";
-            customButton4.UseVisualStyleBackColor = false;
-            customButton4.Click += customButton4_Click;
+            commandButton.BackColor = Color.FromArgb(25, 27, 28);
+            commandButton.BorderColor = Color.FromArgb(25, 27, 28);
+            commandButton.BorderSize = 1;
+            commandButton.FlatAppearance.BorderSize = 0;
+            commandButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(25, 27, 28);
+            commandButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(35, 35, 35);
+            commandButton.FlatStyle = FlatStyle.Flat;
+            commandButton.ForeColor = Color.White;
+            commandButton.Location = new Point(451, 335);
+            commandButton.Name = "commandButton";
+            commandButton.Size = new Size(109, 23);
+            commandButton.TabIndex = 20;
+            commandButton.Text = "Run command";
+            commandButton.UseVisualStyleBackColor = false;
+            commandButton.Click += commandButton_Click;
             // 
-            // panelDownloader
+            // downloadPanel
             // 
-            panelDownloader.Controls.Add(labelDownload);
-            panelDownloader.Controls.Add(progressBar1);
-            panelDownloader.Location = new Point(12, 12);
-            panelDownloader.Name = "panelDownloader";
-            panelDownloader.Size = new Size(548, 346);
-            panelDownloader.TabIndex = 21;
-            panelDownloader.Visible = false;
+            downloadPanel.Controls.Add(downloadLabel);
+            downloadPanel.Controls.Add(downloadProgressBar);
+            downloadPanel.Location = new Point(12, 12);
+            downloadPanel.Name = "downloadPanel";
+            downloadPanel.Size = new Size(548, 346);
+            downloadPanel.TabIndex = 21;
+            downloadPanel.Visible = false;
             // 
-            // labelDownload
+            // downloadLabel
             // 
-            labelDownload.AutoSize = true;
-            labelDownload.ForeColor = Color.White;
-            labelDownload.Location = new Point(212, 143);
-            labelDownload.Name = "labelDownload";
-            labelDownload.Size = new Size(125, 15);
-            labelDownload.TabIndex = 1;
-            labelDownload.Text = "Downloading Scrcpy...";
+            downloadLabel.AutoSize = true;
+            downloadLabel.ForeColor = Color.White;
+            downloadLabel.Location = new Point(212, 143);
+            downloadLabel.Name = "downloadLabel";
+            downloadLabel.Size = new Size(125, 15);
+            downloadLabel.TabIndex = 1;
+            downloadLabel.Text = "Downloading Scrcpy...";
             // 
-            // progressBar1
+            // downloadProgressBar
             // 
-            progressBar1.Location = new Point(0, 162);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(548, 23);
-            progressBar1.TabIndex = 0;
+            downloadProgressBar.Location = new Point(0, 162);
+            downloadProgressBar.Name = "downloadProgressBar";
+            downloadProgressBar.Size = new Size(548, 23);
+            downloadProgressBar.TabIndex = 0;
             // 
             // Form1
             // 
@@ -254,16 +254,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(572, 370);
-            Controls.Add(richTextBox1);
-            Controls.Add(customButton4);
-            Controls.Add(customButton3);
-            Controls.Add(customButton2);
-            Controls.Add(customButton1);
+            Controls.Add(consoleTextBox);
+            Controls.Add(commandButton);
+            Controls.Add(disconnectButton);
+            Controls.Add(runButton);
+            Controls.Add(connectButton);
             Controls.Add(panelTextBox1);
             Controls.Add(panelMaskedTextBox1);
-            Controls.Add(label1);
-            Controls.Add(checkBox1);
-            Controls.Add(panelDownloader);
+            Controls.Add(ipLabel);
+            Controls.Add(screenCheckBox);
+            Controls.Add(downloadPanel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
@@ -276,28 +276,28 @@
             panelMaskedTextBox1.PerformLayout();
             panelTextBox1.ResumeLayout(false);
             panelTextBox1.PerformLayout();
-            panelDownloader.ResumeLayout(false);
-            panelDownloader.PerformLayout();
+            downloadPanel.ResumeLayout(false);
+            downloadPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private CheckBox checkBox1;
-        private MaskedTextBox maskedTextBox1;
-        private Label label1;
-        private TextBox textBox1;
+        private CheckBox screenCheckBox;
+        private MaskedTextBox ipTextBox;
+        private Label ipLabel;
+        private TextBox commandTextBox;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem clearToolStripMenuItem;
         private Panel panelMaskedTextBox1;
         private Panel panelTextBox1;
-        private Helpers.CustomButton customButton1;
-        private Helpers.CustomButton customButton2;
-        private Helpers.CustomButton customButton3;
-        private Helpers.CustomButton customButton4;
-        public ProgressBar progressBar1;
-        public Label labelDownload;
-        public RichTextBox richTextBox1;
-        public Panel panelDownloader;
+        private Helpers.CustomButton connectButton;
+        private Helpers.CustomButton runButton;
+        private Helpers.CustomButton disconnectButton;
+        private Helpers.CustomButton commandButton;
+        public ProgressBar downloadProgressBar;
+        public Label downloadLabel;
+        public RichTextBox consoleTextBox;
+        public Panel downloadPanel;
     }
 }

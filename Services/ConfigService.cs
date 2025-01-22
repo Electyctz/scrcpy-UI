@@ -8,7 +8,7 @@ namespace scrcpy_UI.Services
         private string configFilePath = Path.Combine(Environment.CurrentDirectory, "config.json");
         public event Action<string, Color> OnTextReceived;
 
-        public async Task<List<ConfigData>> LoadConfig()
+        public async Task<List<ConfigData>> LoadConfigAsync()
         {
             try
             {
@@ -29,7 +29,7 @@ namespace scrcpy_UI.Services
             }
         }
 
-        public async Task SaveConfig(ConfigData config)
+        public async Task SaveConfigAsync(ConfigData config)
         {
             var configList = new List<ConfigData> { config };
 

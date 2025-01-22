@@ -76,7 +76,7 @@ namespace scrcpy_UI.Services
             }
         }
 
-        public async void ScrcpyVersionCheck()
+        public async void VersionCheckAsync()
         {
             if (File.Exists(workingDirectory + @"\scrcpy.exe"))
             {
@@ -109,7 +109,7 @@ namespace scrcpy_UI.Services
 
                         if (result == DialogResult.Yes)
                         {
-                            await ScrcpyDownload();
+                            await ScrcpyDownloadAsync();
                         }
                         if (result == DialogResult.No)
                         {
@@ -131,7 +131,7 @@ namespace scrcpy_UI.Services
 
                 if (result == DialogResult.Yes)
                 {
-                    await ScrcpyDownload();
+                    await ScrcpyDownloadAsync();
                 }
                 if (result == DialogResult.No)
                 {
@@ -140,7 +140,7 @@ namespace scrcpy_UI.Services
             }
         }
 
-        public async Task ScrcpyDownload()
+        public async Task ScrcpyDownloadAsync()
         {
             string targetFilePattern = "scrcpy-win64";
             string outputDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -185,8 +185,8 @@ namespace scrcpy_UI.Services
                             int bytesRead;
                             long totalBytesRead = 0;
 
-                            _form.panelDownloader.Invoke(new Action(() => { _form.panelDownloader.Visible = true; }));
-                            _form.panelDownloader.Invoke(new Action(() => { _form.panelDownloader.BringToFront(); }));
+                            _form.downloadPanel.Invoke(new Action(() => { _form.downloadPanel.Visible = true; }));
+                            _form.downloadPanel.Invoke(new Action(() => { _form.downloadPanel.BringToFront(); }));
 
                             while ((bytesRead = await contentStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
                             {
@@ -197,18 +197,18 @@ namespace scrcpy_UI.Services
                                 {
                                     int progress = (int)((totalBytesRead * 100) / totalBytes.Value);
 
-                                    _form.labelDownload.Invoke(new Action(() => { _form.labelDownload.Text = "Downloading Scrcpy..."; }));
-                                    _form.progressBar1.Invoke(new Action(() => { _form.progressBar1.Value = progress; }));
+                                    _form.downloadLabel.Invoke(new Action(() => { _form.downloadLabel.Text = "Downloading Scrcpy..."; }));
+                                    _form.downloadProgressBar.Invoke(new Action(() => { _form.downloadProgressBar.Value = progress; }));
                                 }
                             }
                         }
 
-                        _form.labelDownload.Invoke(new Action(() => { _form.labelDownload.Text = "Unzipping file..."; }));
-                        var zipProgress = new Progress<int>(progress => _form.progressBar1.Value = progress);
-                        await HelperMethods.UnzipFile(outputPath, outputDirectory, "scrcpy", zipProgress);
+                        _form.downloadLabel.Invoke(new Action(() => { _form.downloadLabel.Text = "Unzipping file..."; }));
+                        var zipProgress = new Progress<int>(progress => _form.downloadProgressBar.Value = progress);
+                        await HelperMethods.UnzipFileAsync(outputPath, outputDirectory, "scrcpy", zipProgress);
 
                         File.Delete(outputPath);
-                        _form.panelDownloader.Invoke(new Action(() => { _form.panelDownloader.Visible = false; }));
+                        _form.downloadPanel.Invoke(new Action(() => { _form.downloadPanel.Visible = false; }));
                         OnTextReceived?.Invoke($"- Scrcpy installed to {outputDirectory}scrcpy!\n", Color.Green);
 
                         return;

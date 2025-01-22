@@ -4,7 +4,7 @@ namespace scrcpy_UI.Helpers
 {
     internal class HelperMethods
     {
-        public static async Task UnzipFile(string zipFilePath, string extractPath, string renamedFolderName, IProgress<int> progress = null)
+        public static async Task UnzipFileAsync(string zipFilePath, string extractPath, string renamedFolderName, IProgress<int> progress = null)
         {
             await Task.Run(() =>
             {
@@ -58,7 +58,7 @@ namespace scrcpy_UI.Helpers
             });
         }
 
-        public static void AppendTextToRichTextBox(RichTextBox richTextBox, string text, Color color)
+        public static void SendMessage(RichTextBox richTextBox, string text, Color color)
         {
             try
             {

@@ -22,29 +22,29 @@ namespace scrcpy_UI
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            var config = await configService.LoadConfig();
+            var config = await configService.LoadConfigAsync();
 
             if (config != null && config.Count > 0)
             {
-                checkBox1.Checked = config[0].ScreenOff;
-                maskedTextBox1.Text = config[0].DeviceIP;
+                screenCheckBox.Checked = config[0].ScreenOff;
+                ipTextBox.Text = config[0].DeviceIP;
                 scrcpyService.scrcpyCurrent = config[0].ScrcpyVersion;
             }
 
-            HelperMethods.AppendTextToRichTextBox(richTextBox1, "- Version check...\n", Color.White);
-            scrcpyService.ScrcpyVersionCheck();
+            HelperMethods.SendMessage(consoleTextBox, "- Version check...\n", Color.White);
+            scrcpyService.VersionCheckAsync();
         }
 
         private async void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             var config = new ConfigData()
             {
-                ScreenOff = checkBox1.Checked,
-                DeviceIP = maskedTextBox1.Text,
+                ScreenOff = screenCheckBox.Checked,
+                DeviceIP = ipTextBox.Text,
                 ScrcpyVersion = scrcpyService.scrcpyCurrent
             };
 
-            await configService.SaveConfig(config);
+            await configService.SaveConfigAsync(config);
 
             scrcpyService.TerminateScrcpyProcess();
             await scrcpyService.RunCommandAsync("adb disconnect");
@@ -72,58 +72,58 @@ namespace scrcpy_UI
 
         private void ScrcpyService_OnTextReceived(string text, Color color)
         {
-            HelperMethods.AppendTextToRichTextBox(richTextBox1, text, color);
+            HelperMethods.SendMessage(consoleTextBox, text, color);
         }
 
         private void ConfigService_OnTextReceived(string text, Color color)
         {
-            HelperMethods.AppendTextToRichTextBox(richTextBox1, text, color);
+            HelperMethods.SendMessage(consoleTextBox, text, color);
         }
 
-        private async void customButton1_Click(object sender, EventArgs e)
+        private async void connectButton_Click(object sender, EventArgs e)
         {
             if (!File.Exists(workingDirectory + @"\scrcpy.exe"))
             {
-                HelperMethods.AppendTextToRichTextBox(richTextBox1, "- Scrcpy not installed!\n", Color.Red);
-                scrcpyService.ScrcpyVersionCheck();
+                HelperMethods.SendMessage(consoleTextBox, "- Scrcpy not installed!\n", Color.Red);
+                scrcpyService.VersionCheckAsync();
                 return;
             }
             await scrcpyService.RunCommandAsync("adb tcpip 5555");
-            await scrcpyService.RunCommandAsync("adb connect " + maskedTextBox1.Text + ":5555");
+            await scrcpyService.RunCommandAsync("adb connect " + ipTextBox.Text + ":5555");
         }
 
-        private async void customButton2_Click(object sender, EventArgs e)
+        private async void runButton_Click(object sender, EventArgs e)
         {
             if (!File.Exists(workingDirectory + @"\scrcpy.exe"))
             {
-                HelperMethods.AppendTextToRichTextBox(richTextBox1, "- Scrcpy not installed!\n", Color.Red);
-                scrcpyService.ScrcpyVersionCheck();
+                HelperMethods.SendMessage(consoleTextBox, "- Scrcpy not installed!\n", Color.Red);
+                scrcpyService.VersionCheckAsync();
                 return;
             }
-            await scrcpyService.RunCommandAsync("", (checkBox1.Checked ? "-S " : "") + "--pause-on-exit=if-error", true);
+            await scrcpyService.RunCommandAsync("", (screenCheckBox.Checked ? "-S " : "") + "--pause-on-exit=if-error", true);
         }
 
-        private async void customButton3_Click(object sender, EventArgs e)
+        private async void disconnectButton_Click(object sender, EventArgs e)
         {
             if (!File.Exists(workingDirectory + @"\scrcpy.exe"))
             {
-                HelperMethods.AppendTextToRichTextBox(richTextBox1, "- Scrcpy not installed!\n", Color.Red);
-                scrcpyService.ScrcpyVersionCheck();
+                HelperMethods.SendMessage(consoleTextBox, "- Scrcpy not installed!\n", Color.Red);
+                scrcpyService.VersionCheckAsync();
                 return;
             }
             await scrcpyService.RunCommandAsync("adb disconnect");
             scrcpyService.TerminateScrcpyProcess();
         }
 
-        private async void customButton4_Click(object sender, EventArgs e)
+        private async void commandButton_Click(object sender, EventArgs e)
         {
             if (!File.Exists(workingDirectory + @"\scrcpy.exe"))
             {
-                HelperMethods.AppendTextToRichTextBox(richTextBox1, "- Scrcpy not installed!\n", Color.Red);
-                scrcpyService.ScrcpyVersionCheck();
+                HelperMethods.SendMessage(consoleTextBox, "- Scrcpy not installed!\n", Color.Red);
+                scrcpyService.VersionCheckAsync();
                 return;
             }
-            await scrcpyService.RunCommandAsync(textBox1.Text);
+            await scrcpyService.RunCommandAsync(commandTextBox.Text);
         }
 
         private void richTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)
@@ -145,14 +145,14 @@ namespace scrcpy_UI
                 }
                 catch (Exception ex)
                 {
-                    HelperMethods.AppendTextToRichTextBox(richTextBox1, $"- Failed to open link: {ex.Message}\n", Color.Red);
+                    HelperMethods.SendMessage(consoleTextBox, $"- Failed to open link: {ex.Message}\n", Color.Red);
                 }
             }
         }
 
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            richTextBox1.Clear();
+            consoleTextBox.Clear();
         }
     }
 }
