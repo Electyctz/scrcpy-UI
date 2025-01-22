@@ -58,7 +58,6 @@ namespace scrcpy_UI.Helpers
             });
         }
 
-
         public static void AppendTextToRichTextBox(RichTextBox richTextBox, string text, Color color)
         {
             try
